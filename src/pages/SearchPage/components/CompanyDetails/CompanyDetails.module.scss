@@ -1,0 +1,33 @@
+.companyDetails {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  .backBtn {
+    cursor: pointer;
+  }
+  .title {
+    margin-top: 16px;
+  }
+  .inlineWrap {
+    overflow-y: auto;
+    height: 100%;
+  }
+  .links {
+    margin-top: 20px;
+    font-size: 20px;
+    .link {
+      &:not(:last-child) {
+        margin-bottom: 16px;
+      }
+      .title {
+        cursor: pointer;
+        text-decoration: underline;
+      }
+    }
+  }
+  .message {
+    display: block;
+    text-align: center;
+    margin-top: 40px;
+  }
+}

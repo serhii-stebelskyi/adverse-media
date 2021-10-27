@@ -1,0 +1,34 @@
+.variants {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @media (max-width: 992px) {
+    flex-wrap: wrap;
+  }
+  .variant {
+    width: 300px;
+    text-align: center;
+    cursor: pointer;
+    @media (max-width: 992px) {
+      width: 100%;
+    }
+    &:first-child {
+      @media (max-width: 992px) {
+        margin-bottom: 24px;
+      }
+    }
+  }
+  .icon {
+    display: block;
+    width: 120px;
+    height: auto;
+    margin: 0 auto;
+    @media (max-width: 992px) {
+      width: 100px;
+    }
+  }
+  .label {
+    display: block;
+    margin-top: 24px;
+  }
+}

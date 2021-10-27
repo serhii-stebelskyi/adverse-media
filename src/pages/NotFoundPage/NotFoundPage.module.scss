@@ -1,0 +1,33 @@
+.notFoundPage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #e5e5e5;
+  span {
+    display: block;
+    text-align: center;
+    line-height: 0.9;
+  }
+  .title {
+    font: {
+      weight: 500;
+      size: 64px;
+    }
+  }
+  .statusCode {
+    font: {
+      weight: bold;
+      size: 144px;
+    }
+    color: #a1a1a1;
+    margin-top: 64px;
+  }
+  .message {
+    font: {
+      weight: 500;
+      size: 36px;
+    }
+    letter-spacing: 0.07em;
+  }
+}

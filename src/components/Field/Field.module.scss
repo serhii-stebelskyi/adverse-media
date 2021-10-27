@@ -1,0 +1,52 @@
+@import "../../styles/vars.scss";
+
+$label_color: #666;
+$border_color: #ababab;
+$border_radius: 83px;
+$color: #666;
+$placeholder: #ababab;
+
+.fieldWrap {
+  .label,
+  .errorMessage {
+    display: block;
+    line-height: 0.9;
+  }
+  .label {
+    color: $label_color;
+    font: {
+      size: 24px;
+      weight: 500;
+    }
+    margin-bottom: 24px;
+  }
+  .field {
+    width: 100%;
+    border: 2px solid $border_color;
+    border-radius: $border_radius;
+    height: 58px;
+    padding-left: 30px;
+    padding-right: 30px;
+    font-weight: 500;
+    font-size: 20px;
+    color: $color;
+    @media (max-width: 1200px) {
+      height: 50px;
+    }
+    &::placeholder {
+      color: $placeholder;
+      font: inherit;
+    }
+  }
+  .errorMessage {
+    color: $error_color;
+    font-size: 24px;
+    line-height: 0.9;
+    margin-top: 7px;
+  }
+  &.error {
+    .field {
+      border-color: $error_color;
+    }
+  }
+}

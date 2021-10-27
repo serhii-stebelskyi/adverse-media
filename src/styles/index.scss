@@ -1,0 +1,104 @@
+@import "./vars.scss";
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700;900&display=swap");
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: "Red Hat Display", sans-serif;
+  font-size: 24px;
+  @media (max-width: 1200px) {
+    font-size: 18px;
+  }
+  @media (max-width: 767px) {
+    font-size: 16px;
+  }
+}
+
+input {
+  font: inherit;
+  outline: none;
+}
+
+label {
+  display: block;
+}
+
+button {
+  display: block;
+  outline: none;
+  font: inherit;
+  cursor: pointer;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+h1 {
+  font: {
+    size: 28px;
+    weight: 900;
+  }
+  text-transform: uppercase;
+  line-height: 1.02;
+  @media (max-width: 1200px) {
+    font-size: 24px;
+  }
+  @media (max-width: 767px) {
+    font-size: 20px;
+  }
+}
+
+h2 {
+  font: {
+    size: 32px;
+    weight: bold;
+  }
+  line-height: 1.02;
+  @media (max-width: 1200px) {
+    font-size: 24px;
+  }
+  @media (max-width: 767px) {
+    font-size: 20px;
+  }
+}
+
+.authContainer {
+  background-color: $background;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 32px 16px;
+  & > .inline {
+    flex: 1 0 auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+  }
+  @media (max-width: 992px) {
+    overflow-y: auto;
+  }
+}
+
+.authFormBody {
+  background-color: white;
+  border: 2px solid $border;
+  border-radius: 25px;
+  box-shadow: $shadow;
+  padding: 80px 100px;
+  @media (max-width: 767px) {
+    padding: 32px 16px;
+  }
+}

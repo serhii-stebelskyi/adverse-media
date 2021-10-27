@@ -1,0 +1,31 @@
+@import "../../styles/vars.scss";
+$border_color: #666;
+
+.fieldWrap {
+  .searchBtn {
+    position: absolute;
+    top: 17px;
+    left: 30px;
+    display: block;
+    width: 26px;
+    height: auto;
+    @media (max-width: 1200px) {
+      top: 13px;
+      left: 15px;
+      display: block;
+      width: 22px;
+      height: auto;
+    }
+  }
+  .field {
+    padding-left: 70px;
+    padding-right: 24px;
+    border-width: 3px;
+    border-color: $border_color;
+    box-shadow: $shadow;
+    @media (max-width: 1200px) {
+      padding-left: 40px;
+      padding-right: 16px;
+    }
+  }
+}

@@ -1,0 +1,16 @@
+$background: #cacaca;
+$border: #666666;
+$shadow: 0px 4px 14px rgba(0, 0, 0, 0.25);
+
+.button {
+  background-color: $background;
+  border: 3px solid $border;
+  box-shadow: $shadow;
+  border-radius: 83px;
+  padding: 18px 60px;
+  line-height: 1;
+  font-size: 20px;
+  @media (max-width: 1200px) {
+    padding: 12px 34px;
+  }
+}

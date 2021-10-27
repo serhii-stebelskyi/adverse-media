@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg enable-background="new 0 0 128 128" version="1.1" viewBox="0 0 128 128" xmlspace="preserve" xmlns="http://www.w3.org/2000/svg"><style type="text/css">
+	.st0{fill:#00B8DF;}
+	.st1{fill:#FF9A30;}
+	.st2{fill:#FFFFFF;}
+	.st3{fill:#61BEE2;}
+	.st4{fill:#FD4233;}
+	.st5{fill:#FF402F;}
+	.st6{fill:#1D409D;}
+	.st7{fill:#007732;}
+	.st8{fill:#FF5A29;}
+</style><path d="M80,96h-8.3l-8-13l-8,13H48l11.4-17.7L48.7,61.7h8l7.4,12.3l7.2-12.3h7.8l-10.8,17L80,96z" fill="#007732"/><path d="m104 126h-80c-5.5 0-10-4.5-10-10v-104c0-5.5 4.5-10 10-10h40.7c2.7 0 5.2 1 7.1 2.9l39.3 39.3c1.9 1.9 2.9 4.4 2.9 7.1v64.7c0 5.5-4.5 10-10 10zm-80-120c-3.3 0-6 2.7-6 6v104c0 3.3 2.7 6 6 6h80c3.3 0 6-2.7 6-6v-64.7c0-1.6-0.6-3.1-1.8-4.2l-39.3-39.3c-1.1-1.2-2.6-1.8-4.2-1.8h-40.7z" fill="#007732"/>
+	
+	<metadata>
+		<rdfRDF xmlnsdc="http://purl.org/dc/elements/1.1/" xmlnsrdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlnsrdfs="http://www.w3.org/2000/01/rdf-schema#">
+			<rdfDescription about="https://iconscout.com/legal#licenses" dcdate="2016-12-14" dcdescription="File, Document, Excel, Spreadsheet, Table, Xls" dcdormat="image/svg+xml" dclanguage="en" dcpublisher="Iconscout" dctitle="File, Document, Excel, Spreadsheet, Table, Xls">
+				<dcCreator>s
+					<rdfBag>
+						<rdfLi>Igor Verizub</rdfLi>
+					</rdfBag>
+				</dcCreator>
+			</rdfDescription>
+		</rdfRDF>
+    </metadata></svg>
