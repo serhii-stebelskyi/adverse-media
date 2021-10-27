@@ -1,19 +1,19 @@
-import axios from 'axios'
+import axios from "axios";
 
 const instance = axios.create({
-  baseURL: 'http://localhost:8080',
+  baseURL: process.env.REACT_APP_BASE_URL,
   headers: {
-    'Content-Type': 'application/json'
+    "Content-Type": "application/json",
   },
   transformRequest: [
     function (data, headers) {
-      const access_token = localStorage.getItem('access_token')
+      const access_token = localStorage.getItem("access_token");
       if (access_token) {
-        headers['Authorization'] = `Bearer ${access_token}`
+        headers["Authorization"] = `Bearer ${access_token}`;
       }
-      return JSON.stringify(data)
-    }
-  ]
-})
+      return JSON.stringify(data);
+    },
+  ],
+});
 
-export default instance
+export default instance;
