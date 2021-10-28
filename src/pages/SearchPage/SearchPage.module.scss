@@ -69,7 +69,8 @@ $upload_btn_width-sm: 165px;
     .inlineWrap {
       position: relative;
     }
-    .hiddenField {
+    .hiddenField,
+    .hiddenField::-webkit-file-upload-button {
       position: absolute;
       left: 0;
       top: 0;
@@ -77,6 +78,7 @@ $upload_btn_width-sm: 165px;
       bottom: 0;
       opacity: 0;
       z-index: 1;
+      cursor: pointer;
     }
   }
   .filenameWrap {

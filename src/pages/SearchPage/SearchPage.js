@@ -29,6 +29,7 @@ const SearchPage = () => {
   const [message, setMessage] = useState(null);
   const [visibleDownloadPopup, setVisibleDownloadPopup] = useState(false);
   const iframeRef = useRef(null);
+
   useEffect(() => {
     axios.get("/most-searches").then((res) => {
       if (Array.isArray(res?.data)) {
@@ -111,7 +112,10 @@ const SearchPage = () => {
       <div className={s.mainCol}>
         <div className={s.topBar}>
           <div className={s.searchBarWrap}>
-            <SearchBar handleSelect={handleSelectCompany} />
+            <SearchBar
+              handleSelect={handleSelectCompany}
+              currentCompany={currentCompany}
+            />
           </div>
           <div className={s.uploadWrap}>
             <div className={s.inlineWrap}>

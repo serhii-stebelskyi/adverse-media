@@ -8,7 +8,7 @@ import PropTypes from "prop-types";
 import { useOnClickOutside } from "hooks/useOnClickOutside";
 import Loader from "components/Loader/Loader";
 
-const SearchBar = ({ handleSelect }) => {
+const SearchBar = ({ handleSelect, currentCompany }) => {
   const [searchedCompanies, setSearchedCompanies] = useState([]);
   const [searchVal, setSearchVal] = useState("");
   const [visibleSearchedList, setVisibleSearchedList] = useState(false);
@@ -77,7 +77,9 @@ const SearchBar = ({ handleSelect }) => {
             <ul className={s.searchedCompanies}>
               {searchedCompanies.map((company, index) => (
                 <li
-                  className={s.company}
+                  className={classNames(s.company, {
+                    [s.active]: currentCompany?.id === company.id,
+                  })}
                   onClick={() => handleSelect(company)}
                   key={index}
                 >
@@ -102,9 +104,11 @@ const SearchBar = ({ handleSelect }) => {
 };
 SearchBar.propTypes = {
   handleSelect: PropTypes.func,
+  currentCompany: PropTypes.object,
 };
 SearchBar.defaultProps = {
   handleSelect: () => {},
+  currentCompany: {},
 };
 
 export default SearchBar;
