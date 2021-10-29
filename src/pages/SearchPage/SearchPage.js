@@ -49,7 +49,7 @@ const SearchPage = () => {
       let formData = new FormData();
       formData.append("companies", file);
       const access_token = localStorage.getItem("access_token");
-      const response = await fetch("http://localhost:8080/upload", {
+      const response = await fetch(`${process.env.REACT_APP_BASE_URL}/upload`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${access_token}`,
