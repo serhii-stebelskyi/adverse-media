@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, Fragment } from "react";
 import s from "./SearchPage.module.scss";
 import SearchBar from "./components/SearchBar/SearchBar";
 import Button from "components/Button/Button";
@@ -17,6 +17,7 @@ import {
   arrayToCsv,
 } from "./helpers/functions";
 import { ReactComponent as Back } from "icons/back.svg";
+import Loader from "components/Loader/Loader";
 
 const SearchPage = () => {
   const [uploadedFile, setUploadedFile] = useState(null);
@@ -28,7 +29,7 @@ const SearchPage = () => {
   const [companiesLookup, setCompaniesLookup] = useState(null);
   const [message, setMessage] = useState(null);
   const [visibleDownloadPopup, setVisibleDownloadPopup] = useState(false);
-  const iframeRef = useRef(null);
+  const [iframeLoading, setIframeLoading] = useState(false);
 
   useEffect(() => {
     axios.get("/most-searches").then((res) => {
@@ -72,6 +73,7 @@ const SearchPage = () => {
     if (!currentCompany || company.id !== currentCompany.id) {
       setCurrentCompany(company);
       setSelectedMediaIndex(0);
+      setIframeLoading(true);
     }
   };
 
@@ -105,7 +107,10 @@ const SearchPage = () => {
     }
   };
   const handleSelectMedia = (index) => {
-    setSelectedMediaIndex(index);
+    if (selectedMediaIndex !== index) {
+      setSelectedMediaIndex(index);
+      setIframeLoading(true);
+    }
   };
   return (
     <main className={s.searchPage}>
@@ -173,15 +178,7 @@ const SearchPage = () => {
       >
         {Boolean(currentCompany) &&
           Boolean(currentCompany.media?.[selectedMediaIndex]) && (
-            <div className={s.iframeWrap}>
-              <iframe
-                ref={iframeRef}
-                className={s.iframe}
-                name="link-preview"
-                id="link-preview"
-                src={currentCompany.media[selectedMediaIndex]?.url}
-                title={currentCompany.media[selectedMediaIndex]?.title}
-              ></iframe>
+            <Fragment>
               <a
                 className={s.goToSiteLink}
                 href={currentCompany.media[selectedMediaIndex]?.url}
@@ -192,7 +189,24 @@ const SearchPage = () => {
                   <Back />
                 </Button>
               </a>
-            </div>
+              <div className={s.iframeWrap}>
+                <iframe
+                  className={s.iframe}
+                  name="link-preview"
+                  id="link-preview"
+                  src={currentCompany.media[selectedMediaIndex]?.url}
+                  title={currentCompany.media[selectedMediaIndex]?.title}
+                  onLoad={() => {
+                    setIframeLoading(false);
+                  }}
+                ></iframe>
+                {iframeLoading && (
+                  <div className={s.loading}>
+                    <Loader />
+                  </div>
+                )}
+              </div>
+            </Fragment>
           )}
       </div>
       {message && (
