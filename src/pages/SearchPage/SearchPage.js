@@ -57,9 +57,9 @@ const SearchPage = () => {
         body: formData,
       });
       const result = await response.json();
-      if (result && Array.isArray(result)) {
+      if (typeof result?.count === "number") {
         setMessage(
-          `File uploaded successfully. ${result.length} companies were added.`
+          `File uploaded successfully. ${result.count} companies were added.`
         );
       } else {
         setMessage("Something went wrong. Please, try later.");
