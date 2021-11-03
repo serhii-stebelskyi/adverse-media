@@ -23,7 +23,6 @@ const CompanyDetails = ({
           <ul className={s.links}>
             {data.media.map((media, index) => (
               <li className={s.link} key={index}>
-                Adverse Media -{" "}
                 <span
                   className={s.title}
                   onClick={() => handleChangeLink(index)}
