@@ -18,6 +18,8 @@ import {
 } from "./helpers/functions";
 import { ReactComponent as Back } from "icons/back.svg";
 import Loader from "components/Loader/Loader";
+import { paths } from "routes/paths";
+import { useHistory } from "react-router";
 
 const SearchPage = () => {
   const [uploadedFile, setUploadedFile] = useState(null);
@@ -30,6 +32,7 @@ const SearchPage = () => {
   const [message, setMessage] = useState(null);
   const [visibleDownloadPopup, setVisibleDownloadPopup] = useState(false);
   const [iframeLoading, setIframeLoading] = useState(false);
+  const history = useHistory();
 
   useEffect(() => {
     axios.get("/most-searches").then((res) => {
@@ -112,6 +115,12 @@ const SearchPage = () => {
       setIframeLoading(true);
     }
   };
+
+  const handleSignOut = () => {
+    localStorage.removeItem("access_token");
+    localStorage.removeItem("user");
+    history.push(paths.login);
+  };
   return (
     <main className={s.searchPage}>
       <div className={s.mainCol}>
@@ -176,6 +185,11 @@ const SearchPage = () => {
           [s.current]: currentCompany && currentCompany.media?.length > 0,
         })}
       >
+        {!currentCompany && (
+          <Button className={s.signOut} onClick={handleSignOut}>
+            Sign out
+          </Button>
+        )}
         {Boolean(currentCompany) &&
           Boolean(currentCompany.media?.[selectedMediaIndex]) && (
             <Fragment>

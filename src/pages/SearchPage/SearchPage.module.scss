@@ -190,5 +190,12 @@ $upload_btn_width-sm: 165px;
       width: 100%;
       min-height: 400px;
     }
+    .signOut {
+      position: absolute;
+      top: 25px;
+      right: 20px;
+      padding: 14px 30px;
+      font-size: 18px;
+    }
   }
 }
