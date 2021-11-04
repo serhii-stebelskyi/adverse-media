@@ -1,5 +1,8 @@
 import axios from "axios";
+import { roles } from "./data";
 
+const userStr = localStorage.getItem("user");
+const user = userStr ? JSON.parse(userStr) : {};
 const instance = axios.create({
   baseURL: process.env.REACT_APP_BASE_URL,
   headers: {
@@ -15,5 +18,22 @@ const instance = axios.create({
     },
   ],
 });
+
+instance.interceptors.response.use(
+  (res) => {
+    return res;
+  },
+  (error) => {
+    if (error.response.status === 401) {
+      localStorage.setItem(
+        "user",
+        JSON.stringify({ ...user, type: roles.GUEST })
+      );
+      window.location.replace("/login");
+    } else {
+      return Promise.reject(error);
+    }
+  }
+);
 
 export default instance;

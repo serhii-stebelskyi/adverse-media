@@ -6,11 +6,10 @@ import { Fragment } from "react";
 
 const PrivateRoute = ({ children, allowed, ...props }) => {
   const history = useHistory();
-  const token = localStorage.getItem("access_token");
-  if (allowed === roles.GUEST && token) {
+  const userStr = localStorage.getItem("user");
+  const user = userStr ? JSON.parse(userStr) : {};
+  if (user.type === roles.SIMPLE && allowed === roles.GUEST) {
     history.push(paths.search);
-  } else if (allowed === roles.SIMPLE && !token) {
-    history.push(paths.login);
   } else {
     return <Route {...props}>{children}</Route>;
   }
