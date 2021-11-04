@@ -6,6 +6,7 @@ import classNames from "classnames";
 import axios from "helpers/axios";
 import PropTypes from "prop-types";
 import { useOnClickOutside } from "hooks/useOnClickOutside";
+import { useDebounce } from "hooks/useDebounce";
 import Loader from "components/Loader/Loader";
 
 const SearchBar = ({ handleSelect, currentCompany }) => {
@@ -17,28 +18,21 @@ const SearchBar = ({ handleSelect, currentCompany }) => {
   const searchBarRef = useRef(null);
 
   useOnClickOutside(searchBarRef, () => setVisibleSearchedList(false));
-
+  const debouncedSearchTerm = useDebounce(searchVal, 1000);
   useEffect(() => {
     axios.get("/companies-count").then((res) => {
       setCompaniesCount(res.data.count);
     });
   }, []);
 
-  const handleChange = (e) => {
-    const value = e.target.value;
-    setSearchVal(value);
-    setVisibleSearchedList(false);
-  };
-  const handleSearch = (e) => {
-    e.preventDefault();
-
-    if (searchVal.length > 0) {
+  useEffect(() => {
+    if (debouncedSearchTerm) {
       setSearchLoading(true);
       setVisibleSearchedList(true);
       axios
         .get(`search`, {
           params: {
-            query: String(searchVal),
+            query: String(debouncedSearchTerm),
           },
         })
         .then((res) => {
@@ -53,24 +47,28 @@ const SearchBar = ({ handleSelect, currentCompany }) => {
           setSearchLoading(false);
         });
     }
+  }, [debouncedSearchTerm]);
+
+  const handleChange = (e) => {
+    const value = e.target.value;
+    setSearchVal(value);
+    setVisibleSearchedList(false);
   };
   const visibleSearchedResult = searchVal && visibleSearchedList;
   return (
     <div className={s.searchBar} ref={searchBarRef}>
-      <form onSubmit={handleSearch} noValidate autoComplete="off">
-        <SearchField
-          placeholder={`Search ${String(companiesCount).replace(
-            /\B(?=(\d{3})+(?!\d))/g,
-            ","
-          )} companies...`}
-          value={searchVal}
-          onChange={handleChange}
-          className={classNames(s.searchField, {
-            [s.active]: visibleSearchedResult,
-          })}
-          onFocus={() => setVisibleSearchedList(true)}
-        />
-      </form>
+      <SearchField
+        placeholder={`Search ${String(companiesCount).replace(
+          /\B(?=(\d{3})+(?!\d))/g,
+          ","
+        )} companies...`}
+        value={searchVal}
+        onChange={handleChange}
+        className={classNames(s.searchField, {
+          [s.active]: visibleSearchedResult,
+        })}
+        onFocus={() => setVisibleSearchedList(true)}
+      />
       {visibleSearchedResult && (
         <div className={s.searchedResult}>
           {searchedCompanies.length > 0 && !searchLoading && (

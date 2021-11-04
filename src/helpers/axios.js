@@ -24,7 +24,7 @@ instance.interceptors.response.use(
     return res;
   },
   (error) => {
-    if (error.response.status === 401) {
+    if (error.response?.status === 401) {
       localStorage.setItem(
         "user",
         JSON.stringify({ ...user, type: roles.GUEST })
