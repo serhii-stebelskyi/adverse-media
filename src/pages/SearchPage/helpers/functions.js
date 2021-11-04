@@ -23,7 +23,6 @@ export const formatDataToExport = (data) => {
   const result = [];
   data.forEach((e) => {
     const company = {
-      id: e.id,
       title: e.title,
     };
     e.media.forEach((media, index) => {
